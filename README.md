@@ -69,6 +69,7 @@ docker compose -f microservices/docker-compose.yml up --build
 
 if already in microservices directory : docker compose -f docker-compose.yml up --build
 
+docker compose -f docker-compose.yml down
 
 Open "http://localhost:8080".
 
