@@ -1,0 +1,32 @@
+services:
+  product-service:
+    build: ./product-service
+    expose:
+      - "3001"
+    networks:
+      - novashop-net
+  order-service:
+    build: ./order-service
+    environment:
+      PRODUCT_SERVICE_URL: http://product-service:3001
+    expose:
+      - "3002"
+    depends_on:
+      - product-service
+    networks:
+      - novashop-net
+  gateway:
+    build: ./gateway
+    environment:
+      PRODUCT_SERVICE_URL: http://product-service:3001
+      ORDER_SERVICE_URL: http://order-service:3002
+    ports:
+      - "${GATEWAY_HOST_PORT:-8080}:8080"
+    depends_on:
+      - product-service
+      - order-service
+    networks:
+      - novashop-net
+networks:
+  novashop-net:
+    driver: bridge

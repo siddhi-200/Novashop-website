@@ -1,0 +1,16 @@
+{
+  "name": "novashop-monolith",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Educational ecommerce monolith",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
